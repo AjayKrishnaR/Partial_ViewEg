@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PartialViewEg.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<script src="~/scripts/jquery-1.10.2.js"></script>
+
+<div>
+    @*@{Html.RenderPartial("Student_Partial", Model);}*@
+    @*@Html.Partial("Student_Partial", Model);*@
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#Button1").click(function(){
+                $.ajax({
+                    url:'@Url.Action("check", "Student")',
+                    type:"GET",
+                    success:function(data){
+                    $('#container').html(data)
+                     }
+                     })
+               });
+             });
+                         
+    </script>
+
+  
+    
+    <input id="Button1" type="button" value="button" />
+</div>
+
+<div id="container">
+
+
+
+</div>
